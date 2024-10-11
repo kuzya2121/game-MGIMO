@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Угадай число от 1 до 100 </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('Обои на фон.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(231, 36, 19, 0.331);
+            text-align: center;
+            width: 320px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 12px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            margin-top: 20px;
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+            min-height: 40px; 
+        }
+        .attempts {
+            color: #666;
+            margin-top: 10px;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+        .disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Угадай число от 1 до 100!</h1>
+    <input type="number" id="userInput" placeholder="Введите число от 1 до 100" min="1" max="100">
+    <button id="checkButton" onclick="checkGuess()">Проверить</button>
+    <div class="attempts">Осталось попыток: <span id="remainingAttempts">10</span></div>
+    <div class="message" id="message"></div>
+</div>
+
+<script>
+    let randomNumber = Math.floor(Math.random() * 100) + 1;
+    let attemptsLeft = 10;
+
+    function checkGuess() {
+        const userInput = Number(document.getElementById('userInput').value); // Преобразование в число
+        const message = document.getElementById('message');
+        const remainingAttempts = document.getElementById('remainingAttempts');
+        const checkButton = document.getElementById('checkButton');
+
+        message.classList.remove('error', 'success');
+        
+        // Проверка на корректный ввод
+        if (userInput < 1 || userInput > 100 || isNaN(userInput)) {
+            message.textContent = 'Ошибка: Введите число от 1 до 100.';
+            message.classList.add('error');
+            return;
+        }
+
+        attemptsLeft--;
+        remainingAttempts.textContent = attemptsLeft;
+        
+        if (userInput === randomNumber) {
+            message.textContent = `Поздравляем! Вы угадали число ${randomNumber}.`;
+            message.classList.add('success');
+            endGame();
+        } else if (attemptsLeft > 0) {
+            if (userInput > randomNumber) {
+                message.textContent = 'Загаданное число меньше.';
+            } else {
+                message.textContent = 'Загаданное число больше.';
+            }
+        } else {
+            message.textContent = `Вы проиграли! Загаданное число было: ${randomNumber}`;
+            message.classList.add('error');
+            endGame();
+        }
+    }
+
+    function endGame() {
+        document.getElementById('userInput').disabled = true;
+        document.getElementById('checkButton').classList.add('disabled');
+        document.getElementById('checkButton').disabled = true;
+    }
+</script>
+
+</body>
+
+</html>
