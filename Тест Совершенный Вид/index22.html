@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест по информатике</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('фон.jpg') no-repeat center center fixed; 
+            background-size: cover; 
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ea9d6a;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); 
+        }
+
+        .task {
+            width: 100%;
+            text-align: left;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #000000;
+            padding: 10px;
+            background-color: #e6f7ff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .variant {
+            width: 25%;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: 500;
+            padding: 10px;
+            background-color: #e1f5fe;
+        }
+
+        .answer {
+            width: 90%;
+            padding: 15px;
+            font-size: 16px;
+            margin: 10px auto;
+            display: block;
+            border-radius: 8px;
+            border: 2px solid #007acc;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: separate;
+            border-spacing: 10px;
+            background-color: #fff;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        table td,
+        table th {
+            padding: 20px;
+            font-size: 1.1em;
+            text-align: center;
+        }
+
+        button {
+            display: block;
+            width: 250px;
+            padding: 15px;
+            font-size: 18px;
+            margin: 30px auto;
+            color: #fff;
+            background: linear-gradient(45deg, #007acc, #005f99);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #005f99, #003d66);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 22px;
+            text-align: center;
+            color: #fff;
+            background-color: #4CAF50;
+            padding: 15px;
+            border-radius: 10px;
+            width: 60%;
+            margin: 20px auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .correct {
+            background-color: #d4edda;
+            border: 2px solid green;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 255, 0, 0.1);
+        }
+
+        .incorrect {
+            background-color: #f8d7da;
+            border: 2px solid red;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Тест по информатике Андрей Александрович</h1>
+
+    <div id="questions"></div>
+
+    <button onclick="checkAnswers()">Проверить ответы</button>
+
+    <div id="result" class="result"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+
